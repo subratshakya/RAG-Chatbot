@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot - Document Q&A</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 RAG Chatbot</h1>
+            <p class="subtitle">Ask questions about your documents powered by AI</p>
+        </div>
+
+        <!-- Document Loading Section -->
+        <div class="document-section">
+            <div class="section-title">1. Load a Google Doc</div>
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="docLink" 
+                    placeholder="Paste your Google Docs link (must be public)"
+                    class="input-field"
+                >
+                <button id="loadBtn" class="btn btn-primary">Load Document</button>
+            </div>
+            <div id="loadStatus" class="status-message"></div>
+            <div id="docInfo" class="doc-info" style="display: none;">
+                <p>✅ Document loaded successfully</p>
+                <p id="chunkInfo"></p>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="chat-section">
+            <div class="section-title">2. Ask Questions</div>
+            
+            <div id="chatContainer" class="chat-container">
+                <div class="chat-message system">
+                    <p>Load a document to get started. Then ask any questions about it!</p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="queryInput" 
+                    placeholder="Ask a question about the document..."
+                    class="input-field"
+                    disabled
+                >
+                <button id="sendBtn" class="btn btn-primary" disabled>Send</button>
+            </div>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <button id="clearBtn" class="btn btn-secondary">Clear Session</button>
+            <button id="historyBtn" class="btn btn-secondary">View History</button>
+        </div>
+
+        <!-- Conversation History Modal -->
+        <div id="historyModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Conversation History</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div id="historyContent" class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
